@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        int count = 0;
+
+        for (string word : words) {
+            bool present = true;
+
+            for (char c : word) {
+                if (allowed.find(c) == string::npos) {
+                    present = false;
+                    break;
+                }
+            }
+
+            if (present) count++;
+        }
+
+        return count;
+    }
+};
