@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string removeDuplicates(string s, int k) {
+        string res = "";
+        vector<int> count;
+
+        for (char c : s) {
+            res.push_back(c);
+            if (!count.empty() && res.size() >= 2 && res[res.size() - 1] == res[res.size() - 2]) {
+                count.back()++;
+            } else {
+                count.push_back(1);
+            }
+
+            if (count.back() == k) {
+                res.erase(res.size() - k);
+                count.pop_back();
+            }
+        }
+
+        return res;
+    }
+};
